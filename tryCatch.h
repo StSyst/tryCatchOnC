@@ -41,7 +41,7 @@ typedef enum
 			goto ExitJmp;\
 			}
 
-#define _catch(x) ExitJmp: \
+#define _catch(x) 	ExitJmp: \
 			if(__errorVal != _value)
 
 #define _throw(n) 	__errorVal=n; \
