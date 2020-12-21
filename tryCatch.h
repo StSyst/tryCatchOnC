@@ -34,22 +34,22 @@ typedef enum
 #define _value	ERR_OK
 
 #define _tryBegin	_type __errorVal=_value; \
-					int __lineOfErr = 0;
+			int __lineOfErr = 0;
 
-#define _try(x)  if((__errorVal = x) != _value) {\
-					__lineOfErr = __LINE__; \
-					goto ExitJmp;\
-					}
+#define _try(x)  	if((__errorVal = x) != _value) {\
+			__lineOfErr = __LINE__; \
+			goto ExitJmp;\
+			}
 
 #define _catch(x) ExitJmp: \
-					if(__errorVal != _value)
+			if(__errorVal != _value)
 
 #define _throw(n) 	__errorVal=n; \
-					__lineOfErr = __LINE__;\
-					goto ExitJmp;
+			__lineOfErr = __LINE__;\
+			goto ExitJmp;
 
-#define _getErr()		__errorVal
-#define _getLine()		__lineOfErr
+#define _getErr()	__errorVal
+#define _getLine()	__lineOfErr
 #define _errorPrint()	main_errorHandler(_getErr(),_getLine(),__FILE__,__FUNCTION__)
 
 extern void main_errorHandler(err_t ERROR,int line,const char *file,const char * func);
